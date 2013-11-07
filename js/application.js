@@ -45,6 +45,7 @@
       var server;
       server = sinon.fakeServer.create();
       server.autoRespond = true;
+      server.autoRespondAfter = 350;
       return server.respondWith(/.*/, [
         200, {
           'Content-Type': 'application/json'
@@ -67,24 +68,19 @@
           this.invalid = __bind(this.invalid, this);
           this.valid = __bind(this.valid, this);
           FormView.__super__.constructor.apply(this, arguments);
-          this.ui = _.extend(this._baseUI(), _.result(this, 'ui'));
-          this.events = _.extend(this._baseEvents(), _.result(this, 'events'));
           this.listenTo(this, 'render', this.hideActivityIndicator);
           this.listenTo(this, 'render', this.prepareModel);
           this.listenTo(this, 'save:form:success', this.success);
           this.listenTo(this, 'save:form:failure', this.failure);
         }
 
-        FormView.prototype.tagName = 'form';
-
-        FormView.prototype.ui = {};
-
-        FormView.prototype.events = {};
-
-        FormView.prototype.initialize = function() {
+        FormView.prototype.delegateEvents = function(events) {
           this.ui = _.extend(this._baseUI(), _.result(this, 'ui'));
-          return this.events = _.extend(this._baseEvents(), _.result(this, 'events'));
+          this.events = _.extend(this._baseEvents(), _.result(this, 'events'));
+          return FormView.__super__.delegateEvents.call(this, events);
         };
+
+        FormView.prototype.tagName = 'form';
 
         FormView.prototype._baseUI = function() {
           return {
@@ -219,7 +215,7 @@
           },
           priority: {
             required: true,
-            oneOf: [1, 2, 3]
+            oneOf: [1, 2, 3, '1', '2', '3']
           }
         };
 
@@ -232,7 +228,7 @@
   require.define({
     'templates/create_task_template': function(exports, require, module) {
       var template;
-      template = "<h2>Create A Task:</h2>\n<label for=\"name\">Task Name: </label>\n<input type=\"text\" name=\"name\" data-validation=\"name\"/>\n<br/>\n<label for=\"priority\">Priority: </label>\n<select name=\"priority\" data-validation=\"priority\">\n  <option value=\"1\">Low</option>\n  <option value=\"2\"selected=\"true\">Normal</option>\n  <option value=\"3\">High</option>\n</select>\n<br/>\n<input type=\"submit\" value=\"New Task\">";
+      template = "<h2>Create A Task:</h2>\n<label for=\"name\">Task Name: </label>\n<input type=\"text\" name=\"name\" data-validation=\"name\"/>\n<br/>\n<label for=\"priority\">Priority: </label>\n<select name=\"priority\" data-validation=\"priority\">\n  <option value=\"1\">Low</option>\n  <option value=\"2\"selected=\"true\">Normal</option>\n  <option value=\"3\">High</option>\n</select>\n<br/>\n<input type=\"submit\" value=\"New Task\">\n<p class=\"loading\">Saving to server...</p>";
       return module.exports = _.template(template);
     }
   });
@@ -271,8 +267,9 @@
         CreateTaskView.prototype.className = 'task-form';
 
         CreateTaskView.prototype.ui = {
-          'name': '[name="name"]',
-          'priority': '[name="priority"]'
+          name: '[name="name"]',
+          priority: '[name="priority"]',
+          activityIndicator: '.loading'
         };
 
         CreateTaskView.prototype.createModel = function() {

@@ -18,6 +18,8 @@ body {
 .task-form input,
 .task-form select {
   font-size: 1em;
+  border-radius: 4px;
+  outline: none;
 }
 .task-form input[type="submit"] {
   background: #123456;
@@ -81,4 +83,12 @@ body {
 .task-list-wrapper h2 {
   font-size: 2em;
   line-height: 2em;
+}
+.valid {
+  box-shadow: 0 0 10px green;
+  outline: none;
+}
+.invalid {
+  box-shadow: 0 0 10px red;
+  outline: none;
 }
