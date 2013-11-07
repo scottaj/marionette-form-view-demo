@@ -13,6 +13,7 @@ require.define 'templates/create_task_template': (exports, require, module) ->
   </select>
   <br/>
   <input type="submit" value="New Task">
+  <p class="loading">Saving to server...</p>
   """
 
   module.exports = _.template template

@@ -9,8 +9,9 @@ require.define 'create_task_view': (exports, require, module) ->
     className: 'task-form'
 
     ui:
-      'name': '[name="name"]'
-      'priority': '[name="priority"]'
+      name: '[name="name"]'
+      priority: '[name="priority"]'
+      activityIndicator: '.loading'
 
     createModel: -> new TaskModel
 

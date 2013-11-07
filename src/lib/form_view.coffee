@@ -4,21 +4,17 @@ require.define 'form_view': (exports, require, module) ->
     constructor: ->
       super
 
-      @ui = _.extend @_baseUI(), _.result(this, 'ui')
-      @events = _.extend @_baseEvents(), _.result(this, 'events')
-
       @listenTo this, 'render', @hideActivityIndicator
       @listenTo this, 'render', @prepareModel
       @listenTo this, 'save:form:success', @success
       @listenTo this, 'save:form:failure', @failure
 
-    tagName: 'form'
-    ui: {}
-    events: {}
-
-    initialize: ->
+    delegateEvents: (events)->
       @ui = _.extend @_baseUI(), _.result(this, 'ui')
       @events = _.extend @_baseEvents(), _.result(this, 'events')
+      super events
+
+    tagName: 'form'
 
     _baseUI: ->
       submit: 'input[type="submit"]'
