@@ -14,9 +14,11 @@ $ ->
     Application.form.show new CreateTaskView
     Application.results.show new TasksView collection: new TasksCollection
 
+  # Pretend to respond to all requests.
   Application.addInitializer (options) ->
     server = sinon.fakeServer.create()
     server.autoRespond = true
+    server.autoRespondAfter = 350
     server.respondWith /.*/, [200, {'Content-Type': 'application/json'}, '{}']
 
   Application.on 'initialize:after', (options) ->
