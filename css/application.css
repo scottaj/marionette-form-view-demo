@@ -47,6 +47,8 @@ body {
 }
 .task-list-wrapper ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 .task-list-wrapper ul li {
   font-size: 1.5em;
