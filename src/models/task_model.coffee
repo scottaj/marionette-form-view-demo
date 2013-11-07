@@ -8,4 +8,4 @@ require.define 'task_model': (exports, require, module) ->
         required: true
       priority:
         required: true
-        oneOf: [1, 2, 3]
+        oneOf: [1, 2, 3, '1', '2', '3']

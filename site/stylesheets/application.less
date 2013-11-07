@@ -19,6 +19,8 @@ body {
 
   input, select {
     font-size: 1em;
+    border-radius: 4px;
+    outline: none;
   }
 
   input[type="submit"] {
@@ -93,4 +95,14 @@ body {
     font-size: 2em;
     line-height: 2em;
   }
+}
+
+.valid {
+  box-shadow: 0 0 10px green;
+  outline: none;
+}
+
+.invalid {
+  box-shadow: 0 0 10px red;
+  outline: none;
 }
