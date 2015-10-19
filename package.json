@@ -1,7 +1,7 @@
 {
   "name": "marionette-form-view-demo",
   "version": "0.1.0",
-  "dependencies": {
+  "devDependencies": {
     "grunt": "0.4.x",
     "grunt-contrib-coffee": "0.6.x",
     "grunt-contrib-jade": "0.5.x",
@@ -13,5 +13,20 @@
     "grunt-notify": "0.1.x",
     "grunt-contrib-clean": "0.4.x",
     "grunt-exec": "0.4.x"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "description": "Demo of the FormView class I wrote for for Marionette",
+  "main": "src/lib/form_view.coffee",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/umeboshi2/marionette-form-view-demo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/umeboshi2/marionette-form-view-demo/issues"
+  },
+  "homepage": "https://github.com/umeboshi2/marionette-form-view-demo#readme"
 }
