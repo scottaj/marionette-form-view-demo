@@ -1,5 +1,5 @@
 {
-  "name": "marionette-form-view-demo",
+  "name": "marionette-form-view",
   "version": "0.1.0",
   "devDependencies": {
     "grunt": "0.4.x",
@@ -21,12 +21,16 @@
   "main": "src/lib/formview-cjs.coffee",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/umeboshi2/marionette-form-view-demo.git"
+    "url": "git+https://github.com/umeboshi2/marionette-form-view.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/umeboshi2/marionette-form-view-demo/issues"
+    "url": "https://github.com/umeboshi2/marionette-form-view/issues"
   },
-  "homepage": "https://github.com/umeboshi2/marionette-form-view-demo#readme"
+  "homepage": "https://github.com/umeboshi2/marionette-form-view#readme",
+  "dependencies": {
+    "backbone.marionette": "^2.4.3",
+    "backbone.validation": "^0.7.1"
+  }
 }
