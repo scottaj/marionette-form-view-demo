@@ -18,7 +18,7 @@
     "start": "node server.js"
   },
   "description": "Demo of the FormView class I wrote for for Marionette",
-  "main": "src/lib/form_view.coffee",
+  "main": "src/lib/formview-cjs.coffee",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/umeboshi2/marionette-form-view-demo.git"
